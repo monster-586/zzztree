@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/metroStyle/metroStyle.css">
+    <!--三种风格的ztree style选择一种引入相应的css-->
+    <script src="../js/vue.js"></script>
+
+    <script src="../js/jquery.js"></script>
+    <!--核心包是基础，需要其它功能则需要拼接-->
+    <script src="../js/jquery.ztree.core.js"></script>
+</head>
+<body>
+<div id="div">
+    <input type="text">
+    <ul id="ul" class="ztree"></ul>
+</div>
+
+<script>
+    let vm = new Vue({
+        el: '#div',
+        data: {
+            isShow: true,
+            setting: {
+                data: {
+                    key: {title: "aaaa"},
+                    simpleData: {enable: true}
+                },
+                nodes:[
+                    {id:1,name:"a",pId:0},
+                    {id:2,name:"a",pId:0},
+                    {id:3,name:"b",pId:1},
+                    {id:4,name:"c",pId:1},
+                    {id:5,name:"e",pId:3},
+                    {id:6,name:"f",pId:3},
+                    {id:7,name:"g",pId:4},
+                    {id:8,name:"h",pId:4},
+                    {id:9,name:"i",pId:5},
+                    {id:10,name:"l",pId:5},
+                    {id:11,name:"j",pId:6},
+                    {id:12,name:"k",pId:6},
+
+                ]
+
+
+            }
+        },
+        methods: {
+            initTree: function () {
+                let treeObj = $.fn.zTree.init($("#ul"), this.setting, this.nodes)
+
+            }
+
+        },
+        mounted:function(){//dom节点挂载
+            this.initTree();
+        }
+
+
+    })
+
+
+</script>
+
+
+</body>
+</html>
